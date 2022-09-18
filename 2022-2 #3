@@ -1,0 +1,159 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+void P3();
+void calc_Avg(double number[]);
+void calc_Dev(double number[], double avg);
+
+void P5();
+void sum_Row();
+void sum_Col();
+
+void P9();
+void copy(int* a, int* b, int n);
+
+void P11();
+
+
+int main()
+
+{
+    P3();
+    P5();
+    P9();
+  
+
+}
+
+void P3() {
+    double number[10];
+    int i;
+
+    cout << "실수 10개를 입력하시오" << endl;
+    for ( i = 0; i < 10; i++)
+    {
+        cin >> number[i];
+    }
+    calc_Avg(number);
+    cout << endl;
+}
+
+void calc_Avg(double number[]) {
+    int i;
+    double avg = 0;
+
+    for (i = 0; i < 10; i++)
+    {
+        avg += number[i];
+    }
+
+    avg = avg / 10;
+
+    cout << "평균 " << avg << endl;
+    calc_Dev(number, avg);
+}
+
+void calc_Dev(double number[], double avg)
+{
+    int i;
+    double dev = 0;
+
+    for (i = 0; i < 10; i++)
+    {
+        dev += pow((number[i] - avg), 2);
+    }
+
+    dev = sqrt(dev / 10);
+    cout << "표준편차 " << dev << endl;
+    
+}
+
+////////////////////
+
+void P5() {
+    sum_Row();
+    sum_Col();
+    cout << endl;
+}
+
+void sum_Row() {
+    int table[3][5] = { {12,56,32,16,98},{99,56,34,41,3},{65,3,87,78,21} },
+        col[5] = { 0 }, row[3] = { 0 }, i, j;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            row[i] += table[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        cout << i + 1 << "번째 행의 합계 : " << row[i] << endl;
+    }
+}
+
+void sum_Col() {
+    int table[3][5] = { {12,56,32,16,98},{99,56,34,41,3},{65,3,87,78,21} },
+        col[5] = { 0 }, row[3] = { 0 }, i, j;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            col[j] += table[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        cout << i + 1 << "번째 열의 합계 : " << col[i] << endl;
+    }
+}
+
+////////////////////
+
+void P9() {
+    int A[] = { 1,2,3,4,5 }, B[] = { 6,7,8,9,10 }, n = 0;
+
+    cout << "A[] = {1,2,3,4,5}" << endl;
+
+    cout << "B[] = {6,7,8,9,10}" << endl;
+
+    cout << endl;
+
+    copy(A, B, 5);
+    cout << endl;
+}
+void copy(int* A, int* B, int n) {
+    int* C = NULL, i;
+    C = B;
+    B = A;
+    A = C;
+
+    cout << "A[] = {";
+
+    for (i = 0; i < n; i++) {
+
+        if (i == n - 1)
+            cout << A[i];
+        else
+            cout << A[i] << ",";
+    }
+
+    cout << "}" << endl;
+    cout << "B[] = {";
+
+    for (i = 0; i < n; i++) {
+
+        if (i == n - 1)
+            cout << B[i];
+        else
+            cout << B[i] << ",";
+    }
+
+    cout << "}" << endl;
+
+}
+
